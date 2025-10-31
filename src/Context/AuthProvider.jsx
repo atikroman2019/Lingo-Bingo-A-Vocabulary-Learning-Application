@@ -9,6 +9,7 @@ import {
   updateProfile,
   getAuth,
   signOut,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import app from "../Firebase/Firebase.config";
 
@@ -58,6 +59,13 @@ const AuthProvider = ({ children }) => {
     setUser(null);
     setLoading(false);
   };
+  // ✅ RESET PASSWORD
+  const resetPassword = async (email) => {
+    if (!email) throw new Error("Please enter your email address.");
+    await sendPasswordResetEmail(auth, email);
+    return true;
+  };
+
 
   // ✅ Keep user logged in (and avoid redirecting on reload)
   useEffect(() => {
@@ -81,6 +89,7 @@ const AuthProvider = ({ children }) => {
     login,
     googleLogin,
     logOut,
+    resetPassword,
     loading,
   };
 

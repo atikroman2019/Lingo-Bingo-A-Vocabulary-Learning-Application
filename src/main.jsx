@@ -26,6 +26,7 @@ import UpdateProfile from "./Pages/UpdateProfile";
 import AuthProvider, { AuthContext } from "./Context/AuthProvider";
 import Lesson from "./Pages/Lesson";
 import ErrorPage from "./Pages/ErrorPage";
+import ForgetPassword from "./Pages/ForgetPassword";
 
 
 // ----- Private Route Component -----
@@ -96,8 +97,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      { path: "/login", element: <Login /> },
-      { path: "/register", element: <Register /> },
+      { path: "/login", element: <Login></Login> },
+      { path: "/register", element: <Register></Register> },
+      {path:"/forget-password", element: <ForgetPassword></ForgetPassword>}
     ],
   },
 ]);

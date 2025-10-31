@@ -39,7 +39,7 @@ const Register = () => {
         try {
             await googleLogin();
             toast.success("Login with Google Successful!");
-            navigate("/home");
+            navigate("/");
         } catch (err) {
             toast.error(err.message);
         }

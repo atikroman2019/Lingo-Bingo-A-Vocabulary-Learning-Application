@@ -32,8 +32,8 @@ const Login = () => {
     };
     return (
         <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
-            <div className="bg-white rounded-xl shadow-lg p-10 w-full max-w-md">
-                <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Login</h2>
+            <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-md">
+                <h2 className="text-3xl font-bold mb-4 text-center text-gray-800">Login</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <input
                         type="email"
@@ -60,11 +60,16 @@ const Login = () => {
                         </span>
                     </div>
                     <div>
-                        <button className="text-red-500 mb-4 hover:underline">Forgot Password?</button> <br />
-                        <div className="flex gap-3 text-sm">
-                            <p>Don't Have an account?</p>  <Link className="text-purple-500 hover:underline" to="/register"><span className="font-semibold">Register</span></Link>
 
-                        </div>
+                        <Link
+                            to={`/forget-password?email=${encodeURIComponent(email)}`}
+                            className="text-sm  hover:text-blue-600 hover:underline"
+                        >
+                            Forgot Password?
+                        </Link>
+
+                        <br />
+                    
 
 
                     </div>
@@ -77,6 +82,12 @@ const Login = () => {
                 >
                     Login with Google
                 </button>
+                <br />
+
+                    <div className="flex gap-3 text-sm">
+                            <p>Don't Have an account?</p>  <Link className="text-purple-500 hover:underline" to="/register"><span className="font-semibold">Register</span></Link>
+
+                        </div>
             </div>
         </div>
 

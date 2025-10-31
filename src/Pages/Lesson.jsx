@@ -28,6 +28,19 @@ const Lesson = () => {
       .catch((err) => console.error("Error loading JSON:", err));
   }, [lesson_no, user, navigate]);
 
+  // 🔊 Speak the word aloud
+  const speakWord = (word) => {
+    if (!("speechSynthesis" in window)) {
+      alert("Sorry, your browser does not support speech synthesis.");
+      return;
+    }
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = "ja-JP"; // For Japanese voice
+    utterance.rate = 0.9;
+    utterance.pitch = 1;
+    window.speechSynthesis.speak(utterance);
+  };
+
   const getDifficultyColor = (difficulty) => {
     switch (difficulty) {
       case "easy":
@@ -55,11 +68,23 @@ const Lesson = () => {
               key={index}
               className={`p-6 border-l-4 ${getDifficultyColor(
                 vocab.difficulty
-              )} rounded-xl shadow-md hover:shadow-lg transition`}
+              )} rounded-xl shadow-md hover:shadow-lg transition cursor-pointer`}
+              onClick={() => speakWord(vocab.word)} // 👈 Speak on click
             >
-              <h2 className="text-2xl font-semibold text-gray-800">
-                {vocab.word}
-              </h2>
+              <div className="flex justify-between items-center">
+                <h2 className="text-2xl font-semibold text-gray-800">
+                  {vocab.word}
+                </h2>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent triggering speak
+                    speakWord(vocab.word);
+                  }}
+                  className="text-indigo-500 hover:text-indigo-700 text-sm font-medium"
+                >
+                  🔊 Speak
+                </button>
+              </div>
               <p className="italic text-gray-600">{vocab.part_of_speech}</p>
               <p className="mt-2 text-gray-700">
                 <span className="font-medium">Meaning:</span> {vocab.meaning}
@@ -69,7 +94,10 @@ const Lesson = () => {
                 {vocab.pronunciation}
               </p>
               <button
-                onClick={() => setSelectedWord(vocab)}
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent triggering speak
+                  setSelectedWord(vocab);
+                }}
                 className="mt-4 w-full bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-lg transition"
               >
                 When to Say
@@ -116,6 +144,12 @@ const Lesson = () => {
               <span className="font-semibold">Example:</span>{" "}
               {selectedWord.example}
             </p>
+            <button
+              onClick={() => speakWord(selectedWord.word)}
+              className="mb-3 w-full bg-indigo-100 hover:bg-indigo-200 text-indigo-700 font-semibold py-2 rounded-lg transition"
+            >
+              🔊 Hear Word
+            </button>
             <button
               onClick={() => setSelectedWord(null)}
               className="w-full bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-lg transition"
