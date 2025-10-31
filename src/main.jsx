@@ -25,6 +25,7 @@ import UpdateProfile from "./Pages/UpdateProfile";
 // Context
 import AuthProvider, { AuthContext } from "./Context/AuthProvider";
 import Lesson from "./Pages/Lesson";
+import ErrorPage from "./Pages/ErrorPage";
 
 
 // ----- Private Route Component -----
@@ -56,6 +57,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       { path: "/", element: <HomePage /> },
       { path: "/start-learning", element: <StartLearning /> },
