@@ -89,6 +89,9 @@ const Lesson = () => {
               <p className="mt-2 text-gray-700">
                 <span className="font-medium">Meaning:</span> {vocab.meaning}
               </p>
+                <p className=" text-gray-700">
+                <span className="font-medium">Difficulty:</span> {vocab.difficulty}
+              </p>
               <p className="text-gray-700">
                 <span className="font-medium">Pronunciation:</span>{" "}
                 {vocab.pronunciation}

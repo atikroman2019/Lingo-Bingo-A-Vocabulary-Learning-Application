@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 const tutorialVideos = [
   "https://www.youtube.com/embed/5MgBikgcWnY",
-  "https://www.youtube.com/embed/ltrMfT4Qz5Y",
-  "https://www.youtube.com/embed/2V1wtxj-5gY",
-  "https://www.youtube.com/embed/xC6kY0yq5d0",
-  "https://www.youtube.com/embed/8YcD2rP_3xU",
-  "https://www.youtube.com/embed/3GmD2DQZ6oQ",
-  "https://www.youtube.com/embed/Kb6cH6zPZ3Y",
-  "https://www.youtube.com/embed/tQ7UzHxeo1Y",
+  "https://www.youtube.com/embed/VpOmEBuuEI8?si=nvNmMmkXv0rUNhlu",
+  "https://www.youtube.com/embed/2fx37sug4Oo?si=dX8RysoUUAly4sid",
+  "https://www.youtube.com/embed/PMfPDItcY6M?si=hvGArHRbeE3kY1ZQ",
+  "https://www.youtube.com/embed/tupRbmVM9Wc?si=muxa-epcC8ThGjtm",
+  "https://www.youtube.com/embed/EbzkesbQFlU?si=tqnWPZTTtu3HZSQ4",
+  "https://www.youtube.com/embed/4jvzk0PDPVk?si=Lx2s3w2X4Das6InB",
+  "https://www.youtube.com/embed/tvUmVk4Qe8Y?si=s4kCSixdQKmn4MZe",
 ];
 
 const Tutorial = () => {
