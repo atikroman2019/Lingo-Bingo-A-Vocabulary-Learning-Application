@@ -28,7 +28,7 @@ const StartLearning = () => {
                     <Link
                         key={i}
                         to={`/lesson/${i + 1}`}
-                        className="bg-white rounded-xl shadow-md hover:shadow-lg transition p-6 flex items-center justify-center text-xl font-semibold text-gray-700 hover:bg-blue-50 cursor-pointer"
+                        className="bg-indigo-200 rounded-xl shadow-md hover:shadow-lg transition p-6 flex items-center justify-center text-xl font-semibold text-gray-700 hover:bg-blue-50 cursor-pointer"
                     >
                         Lesson {i + 1}
                     </Link>

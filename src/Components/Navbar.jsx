@@ -19,65 +19,39 @@ const Navbar = () => {
 
   const navLinks = (
     <>
-      <NavLink
-        to="/"
-        className={({ isActive }) =>
-          `block px-3 py-2 rounded-md transition ${
-            isActive
-              ? "text-purple-600 font-semibold"
-              : "text-gray-700 hover:text-purple-500"
-          }`
-        }
-        onClick={() => setMenuOpen(false)}
-      >
-        Home
-      </NavLink>
-      <NavLink
-        to="/tutorials"
-        className={({ isActive }) =>
-          `block px-3 py-2 rounded-md transition ${
-            isActive
-              ? "text-purple-600 font-semibold"
-              : "text-gray-700 hover:text-purple-500"
-          }`
-        }
-        onClick={() => setMenuOpen(false)}
-      >
-        Tutorials
-      </NavLink>
-      <NavLink
-        to="/about-us"
-        className={({ isActive }) =>
-          `block px-3 py-2 rounded-md transition ${
-            isActive
-              ? "text-purple-600 font-semibold"
-              : "text-gray-700 hover:text-purple-500"
-          }`
-        }
-        onClick={() => setMenuOpen(false)}
-      >
-        About
-      </NavLink>
-      <NavLink
-        to="/start-learning"
-        className={({ isActive }) =>
-          `block px-3 py-2 rounded-md transition ${
-            isActive
-              ? "text-purple-600 font-semibold"
-              : "text-gray-700 hover:text-purple-500"
-          }`
-        }
-        onClick={() => setMenuOpen(false)}
-      >
-        Start Learning
-      </NavLink>
+      {[
+        { to: "/", label: "Home" },
+        { to: "/tutorials", label: "Tutorials" },
+        { to: "/about-us", label: "About" },
+        { to: "/start-learning", label: "Start Learning" },
+      ].map(({ to, label }) => (
+        <NavLink
+          key={to}
+          to={to}
+          className={({ isActive }) =>
+            `block px-3 py-2 rounded-md text-sm font-medium transition ${
+              isActive
+                ? "text-purple-600 font-semibold"
+                : "text-gray-700 hover:text-purple-500"
+            }`
+          }
+          onClick={() => setMenuOpen(false)}
+        >
+          {label}
+        </NavLink>
+      ))}
 
       {user && (
         <NavLink
           to="/my-profile"
           className={({ isActive }) =>
-            isActive ? "text-purple-600" : "hover:text-purple-500"
+            `block px-3 py-2 rounded-md text-sm font-medium transition ${
+              isActive
+                ? "text-purple-600 font-semibold"
+                : "text-gray-700 hover:text-purple-500"
+            }`
           }
+          onClick={() => setMenuOpen(false)}
         >
           My Profile
         </NavLink>
@@ -87,20 +61,23 @@ const Navbar = () => {
 
   return (
     <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        {/* Logo + Brand */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+        {/* Logo */}
         <div className="flex items-center gap-2">
           <img src={logoPng} alt="Logo" className="w-10 h-10" />
-          <Link to="/" className="text-2xl font-bold text-purple-600">
+          <Link
+            to="/"
+            className="text-xl sm:text-2xl font-bold text-purple-600 whitespace-nowrap"
+          >
             LingoBingo
           </Link>
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-6">{navLinks}</div>
+        <div className="hidden lg:flex items-center gap-6">{navLinks}</div>
 
-        {/* Right Side (User Info / Login) */}
-        <div className="hidden md:flex items-center gap-4">
+        {/* Desktop Right Side */}
+        <div className="hidden lg:flex items-center gap-4">
           {user && user?.email ? (
             <>
               <div className="flex items-center gap-2">
@@ -115,8 +92,8 @@ const Navbar = () => {
                     {user.displayName ? user.displayName.charAt(0) : "U"}
                   </div>
                 )}
-                <span className="font-medium text-gray-700 hidden sm:block">
-                  Welcome! &nbsp;
+                <span className="font-medium text-gray-700 hidden xl:block">
+                  Welcome,&nbsp;
                   <span className="text-purple-600">
                     {user.displayName || "User"}
                   </span>
@@ -139,22 +116,21 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button (for sm–lg devices) */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-gray-700 text-2xl focus:outline-none"
+          className="lg:hidden text-gray-700 text-2xl focus:outline-none"
         >
           {menuOpen ? <FiX /> : <FiMenu />}
         </button>
       </div>
 
-      {/* Mobile Dropdown Menu */}
+      {/* Mobile Dropdown */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
+        <div className="lg:hidden bg-white border-t border-gray-200">
           <div className="flex flex-col p-4 space-y-2">
             {navLinks}
 
-            {/* User Info on Mobile */}
             {user && user?.email ? (
               <div className="mt-4 flex flex-col items-center gap-3">
                 <div className="flex items-center gap-2">
@@ -170,10 +146,7 @@ const Navbar = () => {
                     </div>
                   )}
                   <span className="font-medium text-gray-700">
-                    Welcome! &nbsp;
-                    <span className="text-purple-600">
-                      {user.displayName || "User"}
-                    </span>
+                    {user.displayName || "User"}
                   </span>
                 </div>
                 <button
