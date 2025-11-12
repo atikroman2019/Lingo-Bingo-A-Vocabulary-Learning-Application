@@ -3,18 +3,21 @@ import Header from "../Components/Header";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 
-const MainLayout = ({ user, logOut }) => {
+const MainLayout = () => {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header user={user} logOut={logOut} />
-      <Navbar user={user} />
+    <>
+    <Header></Header>
+      <Navbar></Navbar>
 
-      <main className="flex-grow w-11/12 mx-auto py-6">
+      {/* Page content */}
+      <main>
         <Outlet />
       </main>
+      <Footer></Footer>
 
-      <Footer />
-    </div>
+      {/* ToastContainer always mounted */}
+      
+    </>
   );
 };
 
