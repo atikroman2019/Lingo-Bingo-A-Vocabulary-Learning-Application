@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../Context/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
@@ -14,6 +15,7 @@ const Login = () => {
     e.preventDefault();
     try {
       await login(email, password);
+       toast.success("Login successful!");
       navigate("/");
     } catch (err) {
       console.error(err);

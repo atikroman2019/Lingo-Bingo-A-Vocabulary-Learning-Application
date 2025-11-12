@@ -29,7 +29,6 @@ const register = (name, email, photoURL, password) => {
       return updateProfile(res.user, { displayName: name, photoURL })
         .then(() => {
           setUser(res.user);
-          toast.success("Account created successfully!");
           return res;
         });
     })
@@ -48,7 +47,7 @@ const login = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password)
     .then((res) => {
       setUser(res.user);
-      toast.success("Login successful!");
+     
       return res;
     })
     .catch((error) => {
@@ -66,7 +65,6 @@ const login = (email, password) => {
     try {
       const res = await signInWithPopup(auth, provider);
       setUser(res.user);
-      toast.success("Logged in with Google!");
       return res;
     } catch (error) {
       toast.error(handleFirebaseError(error));
