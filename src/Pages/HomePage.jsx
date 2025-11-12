@@ -136,9 +136,11 @@ const HomePage = () => {
         <p className="max-w-2xl mx-auto text-lg mb-8 opacity-90">
           Connect with other learners around the world. Share experiences, discuss challenges, and grow together.
         </p>
-        <button className="bg-white text-green-600 px-10 py-3 font-semibold rounded-full shadow-lg hover:bg-gray-100 transition">
-          Join Now
-        </button>
+        <Link to='/register'>
+          <button className="bg-white text-green-600 px-10 py-3 font-semibold rounded-full shadow-lg hover:bg-gray-100 transition">
+            Join Now
+          </button>
+        </Link>
       </section>
     </div>
   );

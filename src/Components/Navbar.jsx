@@ -22,17 +22,17 @@ const Navbar = () => {
       {[
         { to: "/", label: "Home" },
         { to: "/tutorials", label: "Tutorials" },
-        { to: "/about-us", label: "About" },
         { to: "/start-learning", label: "Let's Learn" },
+        { to: "/about-us", label: "About" },
+
       ].map(({ to, label }) => (
         <NavLink
           key={to}
           to={to}
           className={({ isActive }) =>
-            `block px-3 py-2 rounded-md text-sm font-medium transition ${
-              isActive
-                ? "text-purple-600 font-semibold"
-                : "text-gray-700 hover:text-purple-500"
+            `block px-3 py-2 rounded-md text-sm font-medium transition ${isActive
+              ? "text-purple-600 font-semibold"
+              : "text-gray-700 hover:text-purple-500"
             }`
           }
           onClick={() => setMenuOpen(false)}
@@ -45,10 +45,9 @@ const Navbar = () => {
         <NavLink
           to="/my-profile"
           className={({ isActive }) =>
-            `block px-3 py-2 rounded-md text-sm font-medium transition ${
-              isActive
-                ? "text-purple-600 font-semibold"
-                : "text-gray-700 hover:text-purple-500"
+            `block px-3 py-2 rounded-md text-sm font-medium transition ${isActive
+              ? "text-purple-600 font-semibold"
+              : "text-gray-700 hover:text-purple-500"
             }`
           }
           onClick={() => setMenuOpen(false)}

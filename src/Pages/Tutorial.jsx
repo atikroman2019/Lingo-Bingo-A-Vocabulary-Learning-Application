@@ -14,11 +14,11 @@ const tutorialVideos = [
 ];
 
 const Tutorial = () => {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) {
+    if (!loading && !user) {
       navigate("/login");
     }
   }, [user, navigate]);

@@ -33,11 +33,9 @@ const Login = () => {
     <div className="flex items-center justify-center min-h-screen bg-gray-50">
       <div className="bg-white rounded-2xl shadow-md p-8 w-full max-w-md border border-gray-100">
         <h2 className="text-3xl font-semibold mb-6 text-center text-gray-800">
-          Welcome Back
+          Login Now!
         </h2>
-        <p className="text-center text-gray-500 mb-6 text-sm">
-          Log in to continue your learning journey
-        </p>
+
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
