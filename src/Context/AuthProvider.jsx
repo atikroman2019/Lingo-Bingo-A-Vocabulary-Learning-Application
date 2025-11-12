@@ -46,6 +46,7 @@ const login = (email, password) => {
 
   return signInWithEmailAndPassword(auth, email, password)
     .then((res) => {
+      
       setUser(res.user);
      
       return res;
